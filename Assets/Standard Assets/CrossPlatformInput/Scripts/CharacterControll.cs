@@ -7,6 +7,7 @@ public class CharacterControll : MonoBehaviour
 {
     public float speed = 0.3f;
     private Quaternion quat;
+    public GameObject deathUI;
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +46,22 @@ public class CharacterControll : MonoBehaviour
 
     public void PlaceCharacter() 
     {
+        var sound = gameObject.GetComponent<AudioSource>();
+        sound.enabled = true;
+
         transform.localPosition = Vector3.zero;
         var rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
          transform.rotation = Quaternion.FromToRotation(Vector3.zero, transform.forward);
+    }
+
+    
+    void OnTriggerEnter(Collider other)
+    {
+        //Make blast sound
+        Time.timeScale = 0f;
+        var sound = gameObject.GetComponent<AudioSource>();
+        sound.enabled = false;
+        deathUI.SetActive(true);
     }
 }

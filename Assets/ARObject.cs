@@ -26,11 +26,4 @@ public class ARObject : MonoBehaviour
         var control = GetComponent<CharacterControll>();
         control.PlaceCharacter();
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        //Make blast sound
-        //Recude live
-        Strike();
-    }
 }
