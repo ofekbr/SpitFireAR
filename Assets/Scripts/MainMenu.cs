@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject playerSpitfire;
+    public GameObject player;
     public GameObject panel;
     
     void Start()
     {
-        var sound = playerSpitfire.GetComponent<AudioSource>();
+        var sound = player.GetComponentInChildren<AudioSource>();
         sound.enabled = false;
         Time.timeScale = 0f;
     }
     
     public void StartSinglePlayer() {
         Time.timeScale = 1f;
-        playerSpitfire.GetComponent<CharacterControll>().PlaceCharacter();
+        player.GetComponent<CharacterControll>().PlaceCharacter();
         panel.SetActive(false);
     }
 

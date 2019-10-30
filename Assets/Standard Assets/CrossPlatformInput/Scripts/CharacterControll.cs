@@ -46,7 +46,7 @@ public class CharacterControll : MonoBehaviour
 
     public void PlaceCharacter() 
     {
-        var sound = gameObject.GetComponent<AudioSource>();
+        var sound = gameObject.GetComponentInChildren<AudioSource>();
         sound.enabled = true;
 
         transform.localPosition = Vector3.zero;
@@ -60,7 +60,7 @@ public class CharacterControll : MonoBehaviour
     {
         //Make blast sound
         Time.timeScale = 0f;
-        var sound = gameObject.GetComponent<AudioSource>();
+        var sound = gameObject.GetComponentInChildren<AudioSource>();
         sound.enabled = false;
         deathUI.SetActive(true);
     }
