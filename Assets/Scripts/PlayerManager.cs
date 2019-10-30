@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("ResetPlayer");
         player.GetComponent<PlayerController>().PlaceCharacter();
-        player.GetComponent<Health>.ResetHealth();
+        player.GetComponent<Health>().ResetHealth();
         
         AudioSource sound = player.GetComponentInChildren<AudioSource>();
         sound.enabled = true;
