@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public  int maxHealth = 100;
-    public event Action<float> OnHealthPctChanged = delegate { };
+    public event Action<float, float> OnHealthChanged = delegate { };
     public int currentHealth { get; private set; }
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
         currentHealth = Math.Max(0, Math.Min(currentHealth, maxHealth));
 
         float currentHealthPct = (float)currentHealth / (float)maxHealth;
-        OnHealthPctChanged(currentHealthPct);
+        OnHealthChanged(currentHealth, maxHealth);
 
         Debug.Log(transform.name + " takes damage " + amount.ToString() + " now has health of " + currentHealth.ToString() + "/" + maxHealth.ToString());
 
@@ -29,6 +29,11 @@ public class Health : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 
     public virtual void Die()

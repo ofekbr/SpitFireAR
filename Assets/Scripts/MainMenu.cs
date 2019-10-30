@@ -5,20 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject player;
     public GameObject panel;
     
     void Start()
     {
-        var sound = player.GetComponentInChildren<AudioSource>();
-        sound.enabled = false;
-        Time.timeScale = 0f;
+        
     }
     
     public void StartSinglePlayer() {
-        Time.timeScale = 1f;
-        player.GetComponent<CharacterControll>().PlaceCharacter();
+        Debug.Log("StartSinglePlayer");
         panel.SetActive(false);
+        GameManager.instance.StartGame();
     }
 
     public void ExitGame() {

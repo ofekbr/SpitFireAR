@@ -3,26 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class CharacterControll : MonoBehaviour
+[RequireComponent(typeof(PlayerHealth))]
+public class PlayerController : MonoBehaviour
 {
     public float speed = 0.3f;
     private Quaternion quat;
-    public GameObject deathUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        float x = CrossPlatformInputManager.GetAxis("Horizontal");
-        float y = CrossPlatformInputManager.GetAxis("Vertical");
-        
+        float x = CrossPlatformInputManager.GetAxis("Vertical");
+        float y = CrossPlatformInputManager.GetAxis("Horizontal");
+
         transform.Rotate(new Vector3(x, y, 0));
         transform.position += transform.forward * Time.deltaTime * speed;
+        // Debug.Log("Move to " + transform.position.ToString() + " time " + Time.deltaTime + " forward " + transform.forward.ToString() + " speed " + speed.ToString());
 
 
         /* 
@@ -44,24 +38,24 @@ public class CharacterControll : MonoBehaviour
         */
     }
 
-    public void PlaceCharacter() 
+    public void PlaceCharacter()
     {
         var sound = gameObject.GetComponentInChildren<AudioSource>();
         sound.enabled = true;
 
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = new Vector3(0, 1, 0);
         var rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
-         transform.rotation = Quaternion.FromToRotation(Vector3.zero, transform.forward);
+        transform.rotation = Quaternion.FromToRotation(Vector3.zero, transform.forward);
     }
 
-    
     void OnTriggerEnter(Collider other)
     {
-        //Make blast sound
-        Time.timeScale = 0f;
-        var sound = gameObject.GetComponentInChildren<AudioSource>();
-        sound.enabled = false;
-        deathUI.SetActive(true);
+        Debug.Log("OnTriggerEnter");
+        Health myHealth = GetComponent<Health>();
+        if (myHealth != null )
+        {
+            myHealth.ModifyHealth(int.MaxValue);
+        }
     }
 }

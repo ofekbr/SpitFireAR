@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Health)), RequireComponent(typeof(Health))]
+[RequireComponent(typeof(Health)), RequireComponent(typeof(Combat))]
 public class Enemy : Interactable
 {
     private PlayerManager playerManager;
@@ -36,7 +36,7 @@ public class Enemy : Interactable
 
     private void HandleAttack()
     {
-        // Animate attack
+        // Add visual effects for attack
         // Play sounds
     }
 }
