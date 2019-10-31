@@ -28,8 +28,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Pathfinding();
-
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= lookRadius)
         {
@@ -39,6 +37,8 @@ public class EnemyController : MonoBehaviour
                 ChaseTarget();
             }
         }
+
+        Pathfinding();
     }
 
     private void FaceTarget()
@@ -65,6 +65,7 @@ public class EnemyController : MonoBehaviour
 
             if (hits.Count > 0)
             {
+                Debug.Log("Proximity alert!");
                 Vector3 direction = ChooseDirection();
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationalDamp * Time.deltaTime);
@@ -75,6 +76,7 @@ public class EnemyController : MonoBehaviour
             Vector3 fwd = transform.TransformDirection(Vector3.forward);
             if (Physics.Raycast(transform.position, fwd, 0.2f))
             {
+                Debug.Log("Proximity alert!");
                 Vector3 direction = ChooseDirection();
                 transform.position += direction * speed * Time.deltaTime;
             }
