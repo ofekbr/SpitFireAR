@@ -35,12 +35,6 @@ public class EnemyController : MonoBehaviour
         {
             if (distance > stoppingDistance)
             {
-                Health opponentHealth = target.GetComponent<Health>();
-                if (opponentHealth != null)
-                {
-                    combat.Attack(opponentHealth);
-                }
-
                 FaceTarget();
                 ChaseTarget();
             }
@@ -57,8 +51,8 @@ public class EnemyController : MonoBehaviour
     private void ChaseTarget()
     {
         Vector3 newPosition = transform.position + transform.forward * speed * Time.deltaTime;
-        float y = Mathf.Min(Mathf.Max(newPosition.y, transform.position.y), target.position.y + 1);
-        transform.position = new Vector3(newPosition.x, y, newPosition.z);
+        // float y = Mathf.Min(Mathf.Max(newPosition.y, transform.position.y), target.position.y + 1); // limit the y 
+        // transform.position = new Vector3(newPosition.x, y, newPosition.z);
         transform.position = newPosition;
     }
 

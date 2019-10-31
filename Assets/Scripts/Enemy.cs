@@ -26,15 +26,14 @@ public class Enemy : Interactable
 
     private void Attack()
     {
-        Combat combat = playerManager.player.GetComponent<Combat>();
-
+        Combat combat = GetComponent<Combat>();
         if (combat != null)
         {
-            combat.Attack(myHealth);
+            combat.Attack();
         }
     }
 
-    private void HandleAttack()
+    private void HandleAttack(GameObject opponent)
     {
         // Add visual effects for attack
         // Play sounds
