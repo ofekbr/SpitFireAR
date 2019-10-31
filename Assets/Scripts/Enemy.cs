@@ -6,15 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Health)), RequireComponent(typeof(Combat))]
 public class Enemy : Interactable
 {
-    private PlayerManager playerManager;
     private Health myHealth;
-    private Combat combat;
 
     private void Start() {
-        playerManager = PlayerManager.instance;
         myHealth = GetComponent<Health>();
-        combat = GetComponent<Combat>();
-        combat.OnAttack += HandleAttack;
     }
 
     public override void Interact()
@@ -22,6 +17,11 @@ public class Enemy : Interactable
         base.Interact();
 
         Attack();
+    }
+
+    public override Transform GetPlayer()
+    {
+        return PlayerManager.instance.player.transform;;
     }
 
     private void Attack()

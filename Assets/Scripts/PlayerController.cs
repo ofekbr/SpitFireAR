@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof(PlayerHealth))]
+[RequireComponent(typeof(PlayerHealth)), RequireComponent(typeof(Combat))]
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0.3f;
@@ -36,6 +36,15 @@ public class PlayerController : MonoBehaviour
 
         }   
         */
+
+        if (true) // Todo: change to get key from input for player shooting
+        {
+            Combat combat = GetComponent<Combat>();
+            if (combat != null)
+            {
+                combat.Attack();
+            }
+        }
     }
 
     public void PlaceCharacter()
@@ -53,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("OnTriggerEnter");
         Health myHealth = GetComponent<Health>();
-        if (myHealth != null )
+        if (myHealth != null)
         {
             myHealth.ModifyHealth(int.MaxValue);
         }

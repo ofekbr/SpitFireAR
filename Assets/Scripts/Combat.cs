@@ -23,7 +23,6 @@ public class Combat : MonoBehaviour
     {
         myHealth = GetComponent<Health>();
         myPower = GetComponent<Power>();
-
         isEnemy = GetComponent<Enemy>() != null;
         isPlayer = GetComponent<Player>() != null;
 
@@ -36,12 +35,14 @@ public class Combat : MonoBehaviour
     }
     public void Attack()
     {
+        Debug.DrawLine(transform.position, transform.forward, Color.yellow);
         if (attackCooldown <= 0)
         {
             GameObject opponent = OpponentInRange();
 
             if (opponent != null && IsFoe(opponent))
             {
+                Debug.DrawLine(transform.position, transform.forward, Color.red);
                 Health opponentHealth = opponent.GetComponent<Health>();
                 StartCoroutine(DoDamage(opponentHealth, attackDelay));
 
@@ -67,6 +68,7 @@ public class Combat : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
         {
+
             return hit.collider.gameObject;
         }
         return null;

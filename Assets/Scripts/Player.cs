@@ -14,11 +14,5 @@ public class Player : MonoBehaviour
             combat.Attack();
         }
     }
-
-    private void HandleAttack(GameObject opponent)
-    {
-        // Add visual effects for attack
-        // Play sounds
-    }
     
 }
