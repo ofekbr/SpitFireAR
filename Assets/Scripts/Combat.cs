@@ -35,7 +35,7 @@ public class Combat : MonoBehaviour
     }
     public void Attack()
     {
-        Debug.DrawLine(transform.position, transform.forward, Color.yellow);
+        Debug.DrawLine(transform.position, transform.forward * 4f, Color.yellow);
         if (attackCooldown <= 0)
         {
             GameObject opponent = OpponentInRange();
