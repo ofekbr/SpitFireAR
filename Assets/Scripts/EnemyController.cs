@@ -94,4 +94,14 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+        Health myHealth = GetComponent<Health>();
+        if (myHealth != null)
+        {
+            myHealth.ModifyHealth(int.MaxValue);
+        }
+    }
 }

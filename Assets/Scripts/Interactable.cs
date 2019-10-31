@@ -12,7 +12,6 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         Transform player = GetPlayer();
-        Debug.Log(transform.name + " is interacting with " + player.name);
     }
 
     public virtual Transform GetPlayer()
