@@ -7,21 +7,9 @@ public class DeathMenu : MonoBehaviour
 {
     public GameObject MainUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartSinglePlayer() {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.instance.StartGame();
     }
 
     public void ExitGame() {

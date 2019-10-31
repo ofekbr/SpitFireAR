@@ -5,20 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject playerSpitfire;
     public GameObject panel;
     
     void Start()
     {
-        var sound = playerSpitfire.GetComponent<AudioSource>();
-        sound.enabled = false;
-        Time.timeScale = 0f;
+        
     }
     
     public void StartSinglePlayer() {
-        Time.timeScale = 1f;
-        playerSpitfire.GetComponent<CharacterControll>().PlaceCharacter();
+        Debug.Log("StartSinglePlayer");
         panel.SetActive(false);
+        GameManager.instance.StartGame();
     }
 
     public void ExitGame() {

@@ -23,7 +23,7 @@ public class ARObject : MonoBehaviour
 
     void Strike()
     {
-        var control = GetComponent<CharacterControll>();
+        var control = GetComponent<PlayerController>();
         control.PlaceCharacter();
     }
 }
