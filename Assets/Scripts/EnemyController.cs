@@ -28,23 +28,17 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Pathfinding();
-
         float distance = Vector3.Distance(target.position, transform.position);
         if (distance <= lookRadius)
         {
             if (distance > stoppingDistance)
             {
-                Health opponentHealth = target.GetComponent<Health>();
-                if (opponentHealth != null)
-                {
-                    combat.Attack(opponentHealth);
-                }
-
                 FaceTarget();
                 ChaseTarget();
             }
         }
+
+        Pathfinding();
     }
 
     private void FaceTarget()
@@ -57,8 +51,8 @@ public class EnemyController : MonoBehaviour
     private void ChaseTarget()
     {
         Vector3 newPosition = transform.position + transform.forward * speed * Time.deltaTime;
-        float y = Mathf.Min(Mathf.Max(newPosition.y, transform.position.y), target.position.y + 1);
-        transform.position = new Vector3(newPosition.x, y, newPosition.z);
+        // float y = Mathf.Min(Mathf.Max(newPosition.y, transform.position.y), target.position.y + 1); // limit the y 
+        // transform.position = new Vector3(newPosition.x, y, newPosition.z);
         transform.position = newPosition;
     }
 
@@ -71,6 +65,7 @@ public class EnemyController : MonoBehaviour
 
             if (hits.Count > 0)
             {
+                Debug.Log("Proximity alert!");
                 Vector3 direction = ChooseDirection();
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationalDamp * Time.deltaTime);
@@ -81,6 +76,7 @@ public class EnemyController : MonoBehaviour
             Vector3 fwd = transform.TransformDirection(Vector3.forward);
             if (Physics.Raycast(transform.position, fwd, 0.2f))
             {
+                Debug.Log("Proximity alert!");
                 Vector3 direction = ChooseDirection();
                 transform.position += direction * speed * Time.deltaTime;
             }
@@ -99,5 +95,15 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+        Health myHealth = GetComponent<Health>();
+        if (myHealth != null)
+        {
+            myHealth.ModifyHealth(int.MaxValue);
+        }
     }
 }

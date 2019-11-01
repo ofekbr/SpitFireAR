@@ -6,15 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Health)), RequireComponent(typeof(Combat))]
 public class Enemy : Interactable
 {
-    private PlayerManager playerManager;
     private Health myHealth;
-    private Combat combat;
 
     private void Start() {
-        playerManager = PlayerManager.instance;
         myHealth = GetComponent<Health>();
-        combat = GetComponent<Combat>();
-        combat.OnAttack += HandleAttack;
     }
 
     public override void Interact()
@@ -24,17 +19,21 @@ public class Enemy : Interactable
         Attack();
     }
 
+    public override Transform GetPlayer()
+    {
+        return PlayerManager.instance.player.transform;;
+    }
+
     private void Attack()
     {
-        Combat combat = playerManager.player.GetComponent<Combat>();
-
+        Combat combat = GetComponent<Combat>();
         if (combat != null)
         {
-            combat.Attack(myHealth);
+            combat.Attack();
         }
     }
 
-    private void HandleAttack()
+    private void HandleAttack(GameObject opponent)
     {
         // Add visual effects for attack
         // Play sounds

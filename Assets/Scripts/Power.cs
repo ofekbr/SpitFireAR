@@ -5,6 +5,8 @@ using UnityEngine;
 public class Power : MonoBehaviour
 {
     public int damage = 5; // set with positive value - our combat function will handle reversing the sign for modifying the opponent's health
+    public float maxDistance = 20f;
+    
     private int defaultDamage;
 
     private void Start()

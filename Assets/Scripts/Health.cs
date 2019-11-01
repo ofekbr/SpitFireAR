@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public  int maxHealth = 100;
+    public float maxHealth = 100f;
     public event Action<float, float> OnHealthChanged = delegate { };
-    public int currentHealth { get; private set; }
+    public float currentHealth { get; private set; }
 
     // Start is called before the first frame update
     private void Awake()
@@ -15,12 +15,12 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void ModifyHealth(int amount)
+    public void ModifyHealth(float amount)
     {
         currentHealth += amount;
         currentHealth = Math.Max(0, Math.Min(currentHealth, maxHealth));
 
-        float currentHealthPct = (float)currentHealth / (float)maxHealth;
+        float currentHealthPct = currentHealth / maxHealth;
         OnHealthChanged(currentHealth, maxHealth);
 
         Debug.Log(transform.name + " takes damage " + amount.ToString() + " now has health of " + currentHealth.ToString() + "/" + maxHealth.ToString());
