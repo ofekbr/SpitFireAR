@@ -1800,6 +1800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
+  maxEnemies: 5
   spawnRate: 8
 --- !u!1 &1121469356
 GameObject:
@@ -2815,7 +2816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1560720932, guid: b43a6cbe431225a459b2bdbd5a2ba9a1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 941876535328938400, guid: b43a6cbe431225a459b2bdbd5a2ba9a1,
         type: 3}

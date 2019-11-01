@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
+    public int maxEnemies = 5;
 
     // Spawn rate per seconds
     public float spawnRate = 8f;
@@ -20,12 +21,13 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time > nextSpawn)
         {
-            Random.InitState(System.DateTime.Now.Millisecond);
-            spawnPos = Random.onUnitSphere + transform.position;
-            //Quaternion rotation = Quaternion.SetLookRotation(transform.position, Vector3.up);
-            Instantiate(enemy, spawnPos, Quaternion.LookRotation(transform.position));
-            Debug.Log("Enemy spawned");
-            
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length >= maxEnemies)
+            {
+                Random.InitState(System.DateTime.Now.Millisecond);
+                spawnPos = Random.onUnitSphere + transform.position;
+                Instantiate(enemy, spawnPos, Quaternion.LookRotation(transform.position));
+                Debug.Log("Enemy spawned");
+            }
             // Set the next spawn time
             nextSpawn = Time.time + spawnRate;
         }
