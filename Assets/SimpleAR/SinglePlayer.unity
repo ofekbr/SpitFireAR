@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: 434761228}
   - component: {fileID: 434761227}
   - component: {fileID: 434761231}
+  - component: {fileID: 434761232}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -840,7 +841,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891207463df45f74685d18eec5afb4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  enemy: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
+  maxEnemies: 5
+  spawnRate: 8
+--- !u!114 &434761232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434761226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891207463df45f74685d18eec5afb4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
   maxEnemies: 5
   spawnRate: 8
 --- !u!1001 &478928002
@@ -1318,7 +1334,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7d7008bf90b0d2f4c9fb16a2603655f6, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 837861337, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
 --- !u!1 &837861336 stripped
 GameObject:
@@ -2924,6 +2941,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1315806223627740176, guid: 0986966c8457e40f99a1102569b5a3f8,
         type: 3}
