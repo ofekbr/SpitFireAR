@@ -58,13 +58,22 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.FromToRotation(Vector3.zero, transform.forward);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collider)
     {
         Debug.Log("OnTriggerEnter");
+        int damage = -1 * int.MaxValue;
+        
+        Power power = collider.GetComponent<Power>();
+        if (power != null)
+        {
+            Debug.Log("Opponent crash");
+            damage = -1 * power.crashDamage;
+        }
+
         Health myHealth = GetComponent<Health>();
         if (myHealth != null)
         {
-            myHealth.ModifyHealth(int.MaxValue);
+            myHealth.ModifyHealth(damage);
         }
     }
 }

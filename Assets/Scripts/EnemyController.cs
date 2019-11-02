@@ -73,9 +73,14 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Vector3 fwd = transform.TransformDirection(Vector3.forward);
-            if (Physics.Raycast(transform.position, fwd, 0.2f))
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 0.2f))
             {
+                if (hit.collider.tag == "Player") 
+                {
+                    return;
+                }
+
                 Debug.Log("Proximity alert!");
                 Vector3 direction = ChooseDirection();
                 transform.position += direction * speed * Time.deltaTime;
@@ -103,7 +108,7 @@ public class EnemyController : MonoBehaviour
         Health myHealth = GetComponent<Health>();
         if (myHealth != null)
         {
-            myHealth.ModifyHealth(int.MaxValue);
+            myHealth.ModifyHealth(-1 * int.MaxValue);
         }
     }
 }
