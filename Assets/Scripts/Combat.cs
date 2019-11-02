@@ -68,7 +68,6 @@ public class Combat : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, myPower.maxDistance))
         {
-
             return hit.collider.gameObject;
         }
         return null;

@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 782974468}
   - component: {fileID: 782974466}
   - component: {fileID: 782974465}
+  - component: {fileID: 782974469}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -493,6 +494,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathUI: {fileID: 195652793}
+--- !u!114 &782974469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782974464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891207463df45f74685d18eec5afb4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
+  maxEnemies: 5
+  spawnRate: 8
 --- !u!1 &791592263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,20 +2293,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5639772095679624279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1833644178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833644168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891207463df45f74685d18eec5afb4a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 1315806223627740185, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
-  spawnRate: 8
 --- !u!1 &1848891359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,6 +2695,26 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7d7008bf90b0d2f4c9fb16a2603655f6, type: 2}
+    - target: {fileID: 1315806223627740178, guid: 0986966c8457e40f99a1102569b5a3f8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315806223627740178, guid: 0986966c8457e40f99a1102569b5a3f8,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315806223627740178, guid: 0986966c8457e40f99a1102569b5a3f8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315806223627740188, guid: 0986966c8457e40f99a1102569b5a3f8,
+        type: 3}
+      propertyPath: speed
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1315806221893550949, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
     - {fileID: 1315806221893550950, guid: 0986966c8457e40f99a1102569b5a3f8, type: 3}
@@ -2707,6 +2729,11 @@ PrefabInstance:
     - target: {fileID: 5639772097211253983, guid: 818d5c8d75a504c90a10193c27bc35d1,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639772097211253983, guid: 818d5c8d75a504c90a10193c27bc35d1,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5639772097211253978, guid: 818d5c8d75a504c90a10193c27bc35d1,
@@ -2769,6 +2796,21 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7d7008bf90b0d2f4c9fb16a2603655f6, type: 2}
+    - target: {fileID: 5639772097211253958, guid: 818d5c8d75a504c90a10193c27bc35d1,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639772097211253958, guid: 818d5c8d75a504c90a10193c27bc35d1,
+        type: 3}
+      propertyPath: m_Height
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5639772097211253958, guid: 818d5c8d75a504c90a10193c27bc35d1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5639772097120416069, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 818d5c8d75a504c90a10193c27bc35d1, type: 3}
