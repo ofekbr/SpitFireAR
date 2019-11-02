@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         float currentHealthPct = currentHealth / maxHealth;
         OnHealthChanged(currentHealth, maxHealth);
 
-        Debug.Log(transform.name + " takes damage " + amount.ToString() + " now has health of " + currentHealth.ToString() + "/" + maxHealth.ToString());
+        //Debug.Log(transform.name + " takes damage " + amount.ToString() + " now has health of " + currentHealth.ToString() + "/" + maxHealth.ToString());
 
         if (currentHealth <= 0)
         {
